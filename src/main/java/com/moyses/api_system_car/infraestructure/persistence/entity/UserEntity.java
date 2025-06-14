@@ -2,6 +2,7 @@ package com.moyses.api_system_car.infraestructure.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -9,18 +10,24 @@ import java.util.UUID;
 public class UserEntity {
     @Id
     private UUID id;
+
     private String name;
     private Integer age;
+
     @Column(unique = true)
     private String email;
     private String password;
     private String address;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private CarEntity car;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ServiceOrderEntity> serviceOrderEntityList;
+
     public UserEntity(){}
 
-    public UserEntity(UUID id, String name, Integer age, String email, String password, String address, CarEntity car) {
+    public UserEntity(UUID id, String name, Integer age, String email, String password, String address, CarEntity car, List<ServiceOrderEntity> serviceOrderEntityList) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -28,16 +35,16 @@ public class UserEntity {
         this.password = password;
         this.address = address;
         this.car = car;
+        this.serviceOrderEntityList = serviceOrderEntityList;
     }
 
-    public UserEntity(String name, Integer age, String email, String password, String address, CarEntity car) {
+    public UserEntity(String name, Integer age, String email, String password, String address, CarEntity car, List<ServiceOrderEntity> serviceOrderEntityList) {
         this.setId(UUID.randomUUID());
         this.name = name;
         this.age = age;
         this.email = email;
         this.password = password;
         this.address = address;
-        this.car = car;
     }
 
     public UserEntity(String name, Integer age, String email, String password, String address) {
@@ -103,5 +110,13 @@ public class UserEntity {
 
     public void setCar(CarEntity car) {
         this.car = car;
+    }
+
+    public List<ServiceOrderEntity> getServiceOrderEntityList() {
+        return serviceOrderEntityList;
+    }
+
+    public void setServiceOrderEntityList(List<ServiceOrderEntity> serviceOrderEntityList) {
+        this.serviceOrderEntityList = serviceOrderEntityList;
     }
 }

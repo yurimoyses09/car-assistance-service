@@ -5,7 +5,7 @@ import com.moyses.api_system_car.domain.repository.UserRepository;
 import com.moyses.api_system_car.infraestructure.persistence.entity.CarEntity;
 import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.CarMapper;
-import com.moyses.api_system_car.infraestructure.web.dto.Car.CarRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.car.CarRequest;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +31,5 @@ public class CarService {
         entity.setUser(user.get());
 
         return _carRepository.registerCar(entity);
-
     }
 }

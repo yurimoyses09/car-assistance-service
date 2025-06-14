@@ -2,7 +2,7 @@ package com.moyses.api_system_car.infraestructure.web.controller;
 
 import com.moyses.api_system_car.application.service.CarService;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.CarMapper;
-import com.moyses.api_system_car.infraestructure.web.dto.Car.CarRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.car.CarRequest;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,15 +18,15 @@ import java.util.logging.Logger;
 @RequestMapping("api/car")
 public class CarController {
 
-    @Autowired
     private final CarService _carService;
     private final CarMapper _carMapper;
+
+    @Autowired
     private static Logger _logger = Logger.getLogger(CarController.class.getName());
 
-    public CarController(CarService carService, CarMapper carMapper, Logger logger) {
+    public CarController(CarService carService, CarMapper carMapper) {
         _carService = carService;
         _carMapper = carMapper;
-        _logger = logger;
     }
 
     @PostMapping

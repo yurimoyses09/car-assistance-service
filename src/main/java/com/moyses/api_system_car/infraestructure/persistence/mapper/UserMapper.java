@@ -1,9 +1,8 @@
 package com.moyses.api_system_car.infraestructure.persistence.mapper;
 
-import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
-import com.moyses.api_system_car.infraestructure.web.dto.Auth.RegisterRequest;
-import com.moyses.api_system_car.infraestructure.web.dto.User.UserResponse;
+import com.moyses.api_system_car.infraestructure.web.dto.auth.RegisterRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.user.UserResponse;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,16 +14,6 @@ public class UserMapper {
                 request.getEmail(),
                 request.getPassword(),
                 request.getAddress());
-    }
-
-    public User toDomain(UserEntity userEntity) {
-        return new User(
-                userEntity.getId(),
-                userEntity.getName(),
-                userEntity.getAge(),
-                userEntity.getEmail(),
-                userEntity.getPassword(),
-                userEntity.getAddress());
     }
 
     public UserResponse toResponse(UserEntity userEntity) {

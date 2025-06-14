@@ -1,4 +1,4 @@
-package com.moyses.api_system_car.infraestructure.web.dto.Car;
+package com.moyses.api_system_car.infraestructure.web.dto.car;
 
 import java.util.UUID;
 

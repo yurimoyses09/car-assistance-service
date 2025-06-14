@@ -1,8 +1,8 @@
-package com.moyses.api_system_car.infraestructure.persistence.repository;
+package com.moyses.api_system_car.infraestructure.persistence.repository.carRepository;
 
-import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.domain.repository.CarRepository;
 import com.moyses.api_system_car.infraestructure.persistence.entity.CarEntity;
+import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,7 +20,8 @@ public class CarRepositoryImpl implements CarRepository {
         return _carJpaRepository.save(entity);
     }
 
-    public List<CarEntity> getCarsByUser(User user){
+    @Override
+    public CarEntity getCarsByUser(UserEntity user) {
         return _carJpaRepository.getCarsByUserEmail(user);
     }
 }

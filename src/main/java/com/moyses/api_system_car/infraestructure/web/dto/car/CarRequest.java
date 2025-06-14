@@ -1,6 +1,4 @@
-package com.moyses.api_system_car.infraestructure.web.dto.Car;
-
-import java.util.UUID;
+package com.moyses.api_system_car.infraestructure.web.dto.car;
 
 public class CarRequest {
     private String model;

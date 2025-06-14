@@ -3,7 +3,7 @@ package com.moyses.api_system_car.application.service;
 import com.moyses.api_system_car.domain.repository.UserRepository;
 import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.UserMapper;
-import com.moyses.api_system_car.infraestructure.web.dto.Auth.RegisterRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.auth.RegisterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

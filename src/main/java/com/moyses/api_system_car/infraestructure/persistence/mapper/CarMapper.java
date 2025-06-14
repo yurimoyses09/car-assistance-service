@@ -1,8 +1,8 @@
 package com.moyses.api_system_car.infraestructure.persistence.mapper;
 
 import com.moyses.api_system_car.infraestructure.persistence.entity.CarEntity;
-import com.moyses.api_system_car.infraestructure.web.dto.Car.CarRequest;
-import com.moyses.api_system_car.infraestructure.web.dto.Car.CarResponse;
+import com.moyses.api_system_car.infraestructure.web.dto.car.CarRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.car.CarResponse;
 import org.springframework.stereotype.Component;
 
 @Component

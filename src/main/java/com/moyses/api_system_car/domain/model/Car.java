@@ -1,5 +1,6 @@
 package com.moyses.api_system_car.domain.model;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Car {
@@ -8,22 +9,16 @@ public class Car {
     private String model;
     private Integer year;
     private String plate;
-    private UUID idUser;
+    private User user;
+    private List<ServiceOrder> serviceOrderList;
 
-    public Car(UUID id, String model, Integer year, String plate, UUID idUser) {
+    public Car(UUID id, String model, Integer year, String plate, User user, List<ServiceOrder> serviceOrderList) {
         this.id = id;
         this.model = model;
         this.year = year;
         this.plate = plate;
-        this.idUser = idUser;
-    }
-
-    public UUID getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(UUID idUser) {
-        this.idUser = idUser;
+        this.user = user;
+        this.serviceOrderList = serviceOrderList;
     }
 
     public UUID getId() {
@@ -56,5 +51,21 @@ public class Car {
 
     public void setPlate(String plate) {
         this.plate = plate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<ServiceOrder> getServiceOrderList() {
+        return serviceOrderList;
+    }
+
+    public void setServiceOrderList(List<ServiceOrder> serviceOrderList) {
+        this.serviceOrderList = serviceOrderList;
     }
 }

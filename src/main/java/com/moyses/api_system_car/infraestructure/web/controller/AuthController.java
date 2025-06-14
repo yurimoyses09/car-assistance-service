@@ -4,9 +4,9 @@ import com.moyses.api_system_car.application.service.UserService;
 import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.UserMapper;
 import com.moyses.api_system_car.infraestructure.security.JwtTokenProvider;
-import com.moyses.api_system_car.infraestructure.web.dto.Auth.JwtResponse;
-import com.moyses.api_system_car.infraestructure.web.dto.Auth.LoginRequest;
-import com.moyses.api_system_car.infraestructure.web.dto.Auth.RegisterRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.auth.JwtResponse;
+import com.moyses.api_system_car.infraestructure.web.dto.auth.LoginRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.auth.RegisterRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,18 +28,18 @@ public class AuthController {
 
     private final UserService _userService;
     private final UserMapper _userMapper;
+
     private static Logger _logger = Logger.getLogger(AuthController.class.getName());
 
     @Autowired
     private final AuthenticationManager _authenticationManager;
     private final JwtTokenProvider _jwtTokenProvider;
 
-    public AuthController(UserService userService, UserMapper userMapper, Logger logger, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider) {
+    public AuthController(UserService userService, UserMapper userMapper, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider) {
         _userService = userService;
         _userMapper = userMapper;
         _authenticationManager = authenticationManager;
         _jwtTokenProvider = jwtTokenProvider;
-        _logger = logger;
     }
 
     @PostMapping("/register")

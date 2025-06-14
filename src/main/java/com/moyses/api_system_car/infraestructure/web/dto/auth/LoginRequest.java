@@ -1,4 +1,4 @@
-package com.moyses.api_system_car.infraestructure.web.dto.Auth;
+package com.moyses.api_system_car.infraestructure.web.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

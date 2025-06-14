@@ -1,4 +1,4 @@
-package com.moyses.api_system_car.infraestructure.web.dto.User;
+package com.moyses.api_system_car.infraestructure.web.dto.user;
 
 public class UserResponse {
 
