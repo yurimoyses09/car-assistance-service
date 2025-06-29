@@ -27,13 +27,13 @@ public class ServiceOrderService {
 
     public ServiceOrderEntity createOrder(ServiceOrderRequest request){
         var user = _userRepository.findByEmail("");
-        var car  = _carRepository.getCarsByUser(user.get());
+        //var car  = _carRepository.getCarsByUser(user.get());
 
         var entity = _mapper.toEntity(request);
 
         entity.setId(UUID.randomUUID());
-        entity.setCar(car);
-        entity.setUser(user.get());
+        //entity.setCar(car);
+        //entity.setUser(user.get());
 
         return  _repository.createOrder(entity);
     }

@@ -1,5 +1,6 @@
 package com.moyses.api_system_car.infraestructure.persistence.mapper;
 
+import com.moyses.api_system_car.domain.model.Car;
 import com.moyses.api_system_car.infraestructure.persistence.entity.CarEntity;
 import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
 import com.moyses.api_system_car.infraestructure.web.dto.car.CarRequest;
@@ -20,11 +21,19 @@ public class CarMapper {
                 .id(UUID.randomUUID()).build();
     }
 
-    public CarResponse ToResponse(CarEntity carEntity){
+    public CarResponse ToResponse(Car car){
         return CarResponse.builder()
-                .id(carEntity.getId())
-                .model(carEntity.getModel())
-                .year(carEntity.getYear())
-                .plate(carEntity.getPlate()).build();
+                .id(car.getId())
+                .model(car.getModel())
+                .year(car.getYear())
+                .plate(car.getPlate()).build();
+    }
+
+    public Car ToModel(CarEntity entity){
+        return Car.builder()
+                .id(entity.getId())
+                .plate(entity.getPlate())
+                .year(entity.getYear())
+                .model(entity.getModel()).build();
     }
 }

@@ -29,7 +29,6 @@ public class UserService {
     }
 
     public UserEntity registerUser(RegisterRequest registerRequest) throws Exception {
-
         if (_repository.findByEmail(registerRequest.getEmail()).isPresent())
             throw new Exception("User already exists");
 

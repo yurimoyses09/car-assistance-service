@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -41,6 +38,20 @@ public class CarController {
             _logger.info("car registered successfully");
             return ResponseEntity.ok(dto);
 
+        } catch (Exception ex) {
+            _logger.info(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getCarByUser(@AuthenticationPrincipal UserDetails userDetails){
+        try{
+            _logger.info("searching for car in user");
+            var response = _carService.getCarByUserId(userDetails);
+
+            _logger.info("car found successfully");
+            return ResponseEntity.ok(_carMapper.ToResponse(response));
         } catch (Exception ex) {
             _logger.info(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
