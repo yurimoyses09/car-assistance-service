@@ -28,12 +28,12 @@ public class AuthController {
 
     private final UserService _userService;
     private final UserMapper _userMapper;
-
-    private static Logger _logger = Logger.getLogger(AuthController.class.getName());
+    private final JwtTokenProvider _jwtTokenProvider;
 
     @Autowired
+    private static Logger _logger = Logger.getLogger(AuthController.class.getName());
+    @Autowired
     private final AuthenticationManager _authenticationManager;
-    private final JwtTokenProvider _jwtTokenProvider;
 
     public AuthController(UserService userService, UserMapper userMapper, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider) {
         _userService = userService;

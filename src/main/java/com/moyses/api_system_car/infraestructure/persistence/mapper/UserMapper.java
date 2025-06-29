@@ -8,19 +8,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
     public UserEntity toEntity(RegisterRequest request){
-        return new UserEntity(
-                request.getName(),
-                request.getAge(),
-                request.getEmail(),
-                request.getPassword(),
-                request.getAddress());
+        return UserEntity.builder()
+                .name(request.getName())
+                .age(request.getAge())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .address(request.getAddress()).build();
     }
 
     public UserResponse toResponse(UserEntity userEntity) {
-        return new UserResponse(
-                userEntity.getName(),
-                userEntity.getAge(),
-                userEntity.getEmail(),
-                userEntity.getAddress());
+        return UserResponse.builder()
+                .name(userEntity.getName())
+                .age(userEntity.getAge())
+                .email(userEntity.getEmail())
+                .address(userEntity.getAddress()).build();
     }
 }

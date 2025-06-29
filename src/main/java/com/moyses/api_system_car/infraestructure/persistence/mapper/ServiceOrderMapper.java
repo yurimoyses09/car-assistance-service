@@ -9,19 +9,17 @@ import org.springframework.stereotype.Component;
 public class ServiceOrderMapper {
 
     public ServiceOrderEntity toEntity(ServiceOrderRequest orderRequest){
-        return new ServiceOrderEntity(
-                orderRequest.getType(),
-                orderRequest.getDescription(),
-                orderRequest.getScheduledDate()
-        );
+        return ServiceOrderEntity.builder()
+                .type(orderRequest.getType())
+                .description(orderRequest.getDescription())
+                .scheduledDate(orderRequest.getScheduledDate()).build();
     }
 
     public ServiceOrderResponse toResponse(ServiceOrderEntity entity){
-        return new ServiceOrderResponse(
-                entity.getId(),
-                entity.getType(),
-                entity.getDescription(),
-                entity.getScheduledDate()
-        );
+        return ServiceOrderResponse.builder()
+                .id(entity.getId())
+                .type(entity.getType())
+                .description(entity.getDescription())
+                .scheduledDate(entity.getScheduledDate()).build();
     }
 }

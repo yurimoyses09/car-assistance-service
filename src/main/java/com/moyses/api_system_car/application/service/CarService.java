@@ -3,13 +3,12 @@ package com.moyses.api_system_car.application.service;
 import com.moyses.api_system_car.domain.repository.CarRepository;
 import com.moyses.api_system_car.domain.repository.UserRepository;
 import com.moyses.api_system_car.infraestructure.persistence.entity.CarEntity;
-import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.CarMapper;
 import com.moyses.api_system_car.infraestructure.web.dto.car.CarRequest;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CarService {
@@ -24,11 +23,10 @@ public class CarService {
         _carMapper = carMapper;
     }
 
-    public CarEntity registerCar(CarRequest request, Authentication authentication) {
-        Optional<UserEntity> user = Optional.ofNullable(_userRepository.findByEmail(authentication.name()).orElseThrow(() -> new RuntimeException("User NotFound")));;
+    public CarEntity registerCar(CarRequest request, UserDetails userDetails) {
+        var userEntity = _userRepository.findByEmail(userDetails.getUsername()).orElseThrow(() -> new RuntimeException("User NotFound"));
 
-        var entity = _carMapper.toEntity(request);
-        entity.setUser(user.get());
+        var entity = _carMapper.toEntity(request, userEntity);
 
         return _carRepository.registerCar(entity);
     }

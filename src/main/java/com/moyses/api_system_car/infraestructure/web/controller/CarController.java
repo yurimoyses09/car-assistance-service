@@ -3,10 +3,11 @@ package com.moyses.api_system_car.infraestructure.web.controller;
 import com.moyses.api_system_car.application.service.CarService;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.CarMapper;
 import com.moyses.api_system_car.infraestructure.web.dto.car.CarRequest;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +31,10 @@ public class CarController {
     }
 
     @PostMapping
-    public ResponseEntity<?> registerCar(@RequestBody CarRequest request, Authentication authentication){
+    public ResponseEntity<?> registerCar(@RequestBody CarRequest request, @AuthenticationPrincipal UserDetails userDetails){
         try{
             _logger.info("registering user's car in the system");
-            var response = _carService.registerCar(request, authentication);
+            var response = _carService.registerCar(request, userDetails);
 
             var dto = _carMapper.ToResponse(response);
 
