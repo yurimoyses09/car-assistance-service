@@ -1,50 +1,21 @@
 package com.moyses.api_system_car.infraestructure.web.dto.serviceOrder;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ServiceOrderRequest {
 
-    public String type;
+    public String name;
+    public Double price;
     public String description;
-    public String status = "Pendent";
+    public String status;
     public Date scheduledDate;
-
-    public ServiceOrderRequest(String type, String description, String status, Date scheduledDate) {
-        this.type = type;
-        this.description = description;
-        this.status = status;
-        this.scheduledDate = scheduledDate;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getScheduledDate() {
-        return scheduledDate;
-    }
-
-    public void setScheduledDate(Date scheduledDate) {
-        this.scheduledDate = scheduledDate;
-    }
 }

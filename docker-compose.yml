@@ -13,6 +13,16 @@ services:
     networks:
       - backend
 
+  catalog-mock:
+    image: typicode/json-server
+    container_name: catalog-service-mock
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./db.json:/data/db.json
+    networks:
+      - backend
+
   app:
     build:
       context: .
@@ -20,6 +30,7 @@ services:
     container_name: api-system-car
     depends_on:
       - postgres
+      - catalog-mock
     ports:
       - "8080:8080"
     environment:

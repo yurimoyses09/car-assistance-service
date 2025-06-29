@@ -10,16 +10,8 @@ public class ServiceOrderMapper {
 
     public ServiceOrderEntity toEntity(ServiceOrderRequest orderRequest){
         return ServiceOrderEntity.builder()
-                .type(orderRequest.getType())
+                .name(orderRequest.getName())
                 .description(orderRequest.getDescription())
                 .scheduledDate(orderRequest.getScheduledDate()).build();
-    }
-
-    public ServiceOrderResponse toResponse(ServiceOrderEntity entity){
-        return ServiceOrderResponse.builder()
-                .id(entity.getId())
-                .type(entity.getType())
-                .description(entity.getDescription())
-                .scheduledDate(entity.getScheduledDate()).build();
     }
 }

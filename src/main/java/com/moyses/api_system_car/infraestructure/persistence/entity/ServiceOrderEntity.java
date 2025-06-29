@@ -20,8 +20,9 @@ public class ServiceOrderEntity {
     @Id
     private UUID id;
 
-    public String type;
+    public String name;
     public String description;
+    public Double price;
     public Date scheduledDate;
 
     private LocalDateTime createdAt;
