@@ -5,7 +5,7 @@ import com.moyses.api_system_car.infraestructure.persistence.entity.ServiceOrder
 import java.util.List;
 import java.util.UUID;
 
-public interface ServiceOrderRepository {
+public interface IServiceOrderRepository {
     ServiceOrderEntity createOrder(ServiceOrderEntity entity);
     List<ServiceOrderEntity> findByCarId(UUID carId);
 }

@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface ServiceOrderJpaRepository extends JpaRepository<ServiceOrderEntity, UUID> {
+public interface IServiceOrderJpaRepository extends JpaRepository<ServiceOrderEntity, UUID> {
     List<ServiceOrderEntity> findByCarId(UUID carId);
 }

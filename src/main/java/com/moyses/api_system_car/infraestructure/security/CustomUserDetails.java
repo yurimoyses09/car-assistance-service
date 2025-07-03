@@ -1,6 +1,6 @@
 package com.moyses.api_system_car.infraestructure.security;
 
-import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
+import com.moyses.api_system_car.domain.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,9 +10,9 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
-    private final UserEntity user;
+    private final User user;
 
-    public CustomUserDetails(UserEntity user) {
+    public CustomUserDetails(User user) {
         this.user = user;
     }
 

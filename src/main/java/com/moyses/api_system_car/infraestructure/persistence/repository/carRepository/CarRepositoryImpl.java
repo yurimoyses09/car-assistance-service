@@ -1,27 +1,33 @@
 package com.moyses.api_system_car.infraestructure.persistence.repository.carRepository;
 
-import com.moyses.api_system_car.domain.repository.CarRepository;
-import com.moyses.api_system_car.infraestructure.persistence.entity.CarEntity;
-import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
+import com.moyses.api_system_car.domain.model.Car;
+import com.moyses.api_system_car.domain.repository.ICarRepository;
+import com.moyses.api_system_car.infraestructure.persistence.mapper.CarMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.UUID;
 
 @Repository
-public class CarRepositoryImpl implements CarRepository {
+public class CarRepositoryImpl implements ICarRepository {
 
-    private final CarJpaRepository _carJpaRepository;
+    private final ICarJpaRepository _carJpaRepository;
+    private final CarMapper _mapper;
 
-    public CarRepositoryImpl(CarJpaRepository carJpaRepository) {
+    public CarRepositoryImpl(ICarJpaRepository carJpaRepository, CarMapper mapper) {
         _carJpaRepository = carJpaRepository;
-    }
-
-    public CarEntity registerCar(CarEntity entity){
-        return _carJpaRepository.save(entity);
+        _mapper = mapper;
     }
 
     @Override
-    public CarEntity getCarsByUser(UserEntity user) {
-        return _carJpaRepository.getCarsByUserEmail(user);
+    public Car registerCar(Car car) {
+        var carEntity = _mapper.toEntity(car);
+        var savedEntity = _carJpaRepository.save(carEntity);
+
+        return _mapper.ToModel(savedEntity);
+    }
+
+    @Override
+    public Car getCarByIdUser(UUID idUser) {
+        return _mapper.ToModel(_carJpaRepository.getCarsByUserId(idUser));
     }
 }

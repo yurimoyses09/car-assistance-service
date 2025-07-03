@@ -5,8 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.UUID;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -14,8 +15,9 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ServiceOrderResponse {
 
-    private UUID id;
-    public String type;
+    private Integer id;
+    public String name;
     public String description;
-    public Date scheduledDate;
+    public BigDecimal price;
+    public List<LocalDateTime> available_data;
 }
