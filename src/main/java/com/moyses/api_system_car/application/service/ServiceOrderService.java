@@ -2,9 +2,9 @@ package com.moyses.api_system_car.application.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moyses.api_system_car.domain.repository.CarRepository;
-import com.moyses.api_system_car.domain.repository.ServiceOrderRepository;
-import com.moyses.api_system_car.domain.repository.UserRepository;
+import com.moyses.api_system_car.domain.repository.ICarRepository;
+import com.moyses.api_system_car.domain.repository.IServiceOrderRepository;
+import com.moyses.api_system_car.domain.repository.IUserRepository;
 import com.moyses.api_system_car.infraestructure.persistence.entity.ServiceOrderEntity;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.ServiceOrderMapper;
 import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceOrderRequest;
@@ -20,12 +20,12 @@ import java.util.UUID;
 @Service
 public class ServiceOrderService {
 
-    private final ServiceOrderRepository _repository;
-    private final UserRepository _userRepository;
-    private final CarRepository _carRepository;
+    private final IServiceOrderRepository _repository;
+    private final IUserRepository _userRepository;
+    private final ICarRepository _carRepository;
     private final ServiceOrderMapper _mapper;
 
-    public ServiceOrderService(ServiceOrderRepository repository, UserRepository userRepository, CarRepository carRepository, ServiceOrderMapper mapper) {
+    public ServiceOrderService(IServiceOrderRepository repository, IUserRepository userRepository, ICarRepository carRepository, ServiceOrderMapper mapper) {
         _repository = repository;
         _userRepository = userRepository;
         _carRepository = carRepository;
