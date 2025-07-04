@@ -23,7 +23,9 @@ public class CarService {
 
     public Car registerCar(CarRequest request, UserDetails userDetails) {
         var userEntity = _userRepository.findByEmail(userDetails.getUsername()).orElseThrow(() -> new RuntimeException("User NotFound"));
-        return _carRepository.registerCar(_carMapper.toModel(request, userEntity));
+        var carMapper = _carMapper.toModel(request, userEntity);
+
+        return _carRepository.registerCar(carMapper);
     }
 
     public Car getCarByUserId(UserDetails userDetails){
