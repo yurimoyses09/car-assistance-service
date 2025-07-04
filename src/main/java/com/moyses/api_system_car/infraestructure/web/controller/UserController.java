@@ -3,10 +3,11 @@ package com.moyses.api_system_car.infraestructure.web.controller;
 import com.moyses.api_system_car.application.service.UserService;
 import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.UserMapper;
+import com.moyses.api_system_car.infraestructure.web.dto.api.Response;
 import com.moyses.api_system_car.infraestructure.web.dto.auth.RegisterRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.user.UserResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,18 +32,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid RegisterRequest request){
-        try {
-            _logger.info("registering user in the system");
-            User registerUser = _service.registerUser(request);
+    public ResponseEntity<Response<UserResponse>> register(@RequestBody @Valid RegisterRequest request){
+        _logger.info("registering user in the system");
+        User registerUser = _service.registerUser(request);
 
-            _logger.info("user registered successfully");
-            return ResponseEntity.ok(_mapper.toResponse(registerUser));
-
-        }catch (Exception ex)
-        {
-            _logger.warning(ex.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
+        _logger.info("user registered successfully");
+        return ResponseEntity.ok(Response.success("user registered successfully", _mapper.toResponse(registerUser)));
     }
 }

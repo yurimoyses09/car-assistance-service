@@ -1,11 +1,11 @@
 package com.moyses.api_system_car.infraestructure.web.controller;
 
 import com.moyses.api_system_car.application.service.AuthService;
+import com.moyses.api_system_car.infraestructure.web.dto.api.Response;
 import com.moyses.api_system_car.infraestructure.web.dto.auth.JwtResponse;
 import com.moyses.api_system_car.infraestructure.web.dto.auth.LoginRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,17 +28,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public JwtResponse login(@RequestBody @Valid LoginRequest request){
-        try{
-            _logger.info("authenticating user in the system");
-            var response = _service.authenticateAndGenerateToken(request.getEmail(), request.getPassword());
+    public ResponseEntity<Response<JwtResponse>> login(@RequestBody @Valid LoginRequest request){
+        _logger.info("authenticating user in the system");
+        var response = _service.authenticateAndGenerateToken(request.getEmail(), request.getPassword());
 
-            _logger.info("token generated successfully");
-            return ResponseEntity.ok(new JwtResponse(response)).getBody();
-
-        } catch (Exception ex) {
-            _logger.warning(ex.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JwtResponse(ex.getMessage())).getBody();
-        }
+        _logger.info("token generated successfully");
+        return ResponseEntity.ok(
+                Response.success("token generated successfully", new JwtResponse((response))));
     }
 }

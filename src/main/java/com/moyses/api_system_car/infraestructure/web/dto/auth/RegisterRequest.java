@@ -12,14 +12,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterRequest {
+
+    @Email
+    @NotBlank(message = "An email is required to register in the system.")
+    private String email;
+
+    @NotBlank(message = "It is necessary to have a password to register in the system.")
+    private String password;
+
     private String name;
     private Integer age;
     private String address;
-
-    @NotBlank
-    @Email
-    private String email;
-
-    @NotBlank
-    private String password;
 }

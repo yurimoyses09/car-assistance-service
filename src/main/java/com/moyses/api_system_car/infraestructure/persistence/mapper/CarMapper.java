@@ -19,6 +19,22 @@ public class CarMapper {
         _userMapper = userMapper;
     }
 
+    public Car ToModel(CarEntity entity){
+        return Car.builder()
+                .id(entity.getId())
+                .plate(entity.getPlate())
+                .year(entity.getYear())
+                .model(entity.getModel()).build();
+    }
+
+    public Car toModel(CarRequest request, User user){
+        return Car.builder()
+                .model(request.getModel())
+                .plate(request.getPlate())
+                .year(request.getYear())
+                .user(user).build();
+    }
+
     public CarEntity toEntity(Car car){
         return CarEntity.builder()
                 .id(UUID.randomUUID())
@@ -29,28 +45,11 @@ public class CarMapper {
                 .build();
     }
 
-    public Car toModel(CarRequest request, User user){
-        return Car.builder()
-                .model(request.getModel())
-                .plate(request.getPlate())
-                .year(request.getYear())
-                .user(user)
-                .id(UUID.randomUUID()).build();
-    }
-
     public CarResponse ToResponse(Car car){
         return CarResponse.builder()
                 .id(car.getId())
                 .model(car.getModel())
                 .year(car.getYear())
                 .plate(car.getPlate()).build();
-    }
-
-    public Car ToModel(CarEntity entity){
-        return Car.builder()
-                .id(entity.getId())
-                .plate(entity.getPlate())
-                .year(entity.getYear())
-                .model(entity.getModel()).build();
     }
 }
