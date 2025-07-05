@@ -13,15 +13,17 @@ services:
     networks:
       - backend
 
-#  catalog-mock:
-#    image: typicode/json-server
-#    container_name: catalog-service-mock
-#    ports:
-#      - "3000:3000"
-#    volumes:
-#      - ./db.json:/data/db.json
-#    networks:
-#      - backend
+  automotive-mock-service:
+    image: clue/json-server
+    container_name: automotive-mock-service
+    volumes:
+      - ./mock-data:/data
+    environment:
+      JSON_SERVER_PORT: 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
 
   app:
     build:
@@ -30,6 +32,7 @@ services:
     container_name: api-system-car
     depends_on:
       - postgres
+      - automotive-mock-service
     ports:
       - "8080:8080"
     environment:
@@ -45,3 +48,4 @@ volumes:
 
 networks:
   backend:
+    driver: bridge

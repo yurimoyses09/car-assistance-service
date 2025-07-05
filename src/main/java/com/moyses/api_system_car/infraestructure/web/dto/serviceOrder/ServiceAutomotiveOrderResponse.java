@@ -13,11 +13,11 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceOrderResponse {
+public class ServiceAutomotiveOrderResponse {
 
     private Integer id;
-    public String name;
-    public String description;
-    public BigDecimal price;
-    public List<LocalDateTime> available_data;
+    private String name;
+    private String description;
+    private Double price;
+    private List<LocalDateTime> available_data;
 }

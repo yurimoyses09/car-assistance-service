@@ -20,5 +20,5 @@ public class User {
     private String password;
     private String address;
     private Car car;
-    private List<ServiceOrder> serviceOrderList;
+    private List<ServiceAutomotiveOrder> serviceAutomotiveOrderList;
 }

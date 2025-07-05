@@ -23,11 +23,11 @@ public class CarRepositoryImpl implements ICarRepository {
         var carEntity = _mapper.toEntity(car);
         var savedEntity = _carJpaRepository.save(carEntity);
 
-        return _mapper.ToModel(savedEntity);
+        return _mapper.toModel(savedEntity);
     }
 
     @Override
     public Car getCarByIdUser(UUID idUser) {
-        return _mapper.ToModel(_carJpaRepository.getCarsByUserId(idUser));
+        return _mapper.toModel(_carJpaRepository.getCarsByUserId(idUser));
     }
 }

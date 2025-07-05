@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.security.sasl.AuthenticationException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +35,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Response<String>> handleGenericError(Exception exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Response.error("A generic exception occurred.", exception.getMessage()));
+    }
+
+    @ExceptionHandler(IOException.class)
+    public ResponseEntity<Response<String>> handleIOError(IOException exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Response.error("A generic exception occurred.", exception.getMessage()));
     }
 }
