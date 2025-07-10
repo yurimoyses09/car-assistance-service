@@ -19,5 +19,5 @@ public class Car {
     private Integer year;
     private String plate;
     private User user;
-    private List<ServiceOrder> serviceOrderList;
+    private List<ServiceAutomotiveOrder> serviceAutomotiveOrderList;
 }

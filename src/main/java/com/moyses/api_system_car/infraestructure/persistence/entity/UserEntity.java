@@ -31,5 +31,5 @@ public class UserEntity {
     private CarEntity car;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ServiceOrderEntity> serviceOrderEntityList;
+    private List<ServiceAutomotiveOrderEntity> serviceAutomotiveOrderEntityList;
 }

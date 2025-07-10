@@ -5,17 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceOrderRequest {
+public class ServiceAutomotiveOrderRequest {
 
-    public String name;
-    public Double price;
-    public String description;
-    public String status;
-    public Date scheduledDate;
+    public UUID id_service;
+    public LocalDateTime scheduled_date;
 }
