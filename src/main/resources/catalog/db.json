@@ -1,44 +1,36 @@
 {
   "services": [
     {
-      "id": 1,
-      "name": "Troca de Óleo",
-      "description": "Troca completa de óleo do motor e filtro",
-      "price": 150.00,
-      "available_data": [
-        "2025-07-01T09:00:00",
-        "2025-07-01T14:00:00",
-        "2025-07-02T10:00:00"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Alinhamento e Balanceamento",
-      "description": "Alinhamento da suspensão e balanceamento das quatro rodas",
-      "price": 200.00,
-      "available_data": [
-        "2025-07-02T11:00:00",
-        "2025-07-03T15:00:00"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Revisão Completa",
-      "description": "Revisão de 50 itens de segurança e desempenho",
-      "price": 500.00,
+      "id": "0fb4b486-97bf-4337-9628-f28daac73a69",
+      "name": "Troca de óleo",
+      "description": "Troca de óleo de motor sintético para carros de passeio",
+      "price": 199.90,
       "available_data": [
         "2025-07-04T09:00:00",
-        "2025-07-05T14:00:00"
+        "2025-07-04T14:00:00",
+        "2025-07-05T10:30:00"
       ]
     },
     {
-      "id": 4,
-      "name": "Troca de Bateria",
-      "description": "Substituição da bateria por uma nova com garantia",
-      "price": 350.00,
+      "id": "8e4568d1-7b44-409d-a38f-321b6aa10cc1",
+      "name": "Alinhamento e Balanceamento",
+      "description": "Serviço de alinhamento completo e balanceamento das rodas",
+      "price": 149.90,
       "available_data": [
-        "2025-07-06T10:00:00",
-        "2025-07-06T16:00:00"
+        "2025-07-04T11:00:00",
+        "2025-07-05T15:30:00",
+        "2025-07-06T09:00:00"
+      ]
+    },
+    {
+      "id": "6930678c-5a9f-400a-8582-ad7881f3772a",
+      "name": "Revisão Completa",
+      "description": "Revisão geral de itens de segurança e manutenção preventiva",
+      "price": 499.90,
+      "available_data": [
+        "2025-07-05T08:00:00",
+        "2025-07-06T13:00:00",
+        "2025-07-07T16:30:00"
       ]
     }
   ]

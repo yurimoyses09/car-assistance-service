@@ -9,6 +9,7 @@ import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAut
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.UUID;
 
 @Component
@@ -20,6 +21,15 @@ public class ServiceAutomotiveOrderMapper {
     public ServiceAutomotiveOrderMapper(CarMapper carMapper, UserMapper userMapper) {
         _carMapper = carMapper;
         _userMapper = userMapper;
+    }
+
+    public ServiceAutomotiveOrderResponse toResponse(ServiceAutomotiveOrder serviceAutomotiveOrder){
+        return ServiceAutomotiveOrderResponse.builder()
+                .id(serviceAutomotiveOrder.getId())
+                .name(serviceAutomotiveOrder.getName())
+                .available_data(Collections.singletonList(serviceAutomotiveOrder.getScheduledDate()))
+                .price(serviceAutomotiveOrder.getPrice())
+                .description(serviceAutomotiveOrder.getDescription()).build();
     }
 
     public ServiceAutomotiveOrder toModel (Car car, User user, ServiceAutomotiveOrderRequest request, ServiceAutomotiveOrderResponse response){

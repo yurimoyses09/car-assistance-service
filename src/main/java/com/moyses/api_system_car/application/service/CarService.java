@@ -1,5 +1,6 @@
 package com.moyses.api_system_car.application.service;
 
+import com.moyses.api_system_car.application.service.port.in.ICarService;
 import com.moyses.api_system_car.domain.model.Car;
 import com.moyses.api_system_car.domain.repository.ICarRepository;
 import com.moyses.api_system_car.domain.repository.IUserRepository;
@@ -9,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CarService {
+public class CarService implements ICarService {
 
     private final ICarRepository _carRepository;
     private final IUserRepository _userRepository;

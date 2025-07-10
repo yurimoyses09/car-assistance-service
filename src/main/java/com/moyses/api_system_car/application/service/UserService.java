@@ -1,5 +1,6 @@
 package com.moyses.api_system_car.application.service;
 
+import com.moyses.api_system_car.application.service.port.in.IUserService;
 import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.domain.repository.IUserRepository;
 import com.moyses.api_system_car.infraestructure.persistence.mapper.UserMapper;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements IUserService {
 
     private final IUserRepository _repository;
     private final UserMapper _userMapper;

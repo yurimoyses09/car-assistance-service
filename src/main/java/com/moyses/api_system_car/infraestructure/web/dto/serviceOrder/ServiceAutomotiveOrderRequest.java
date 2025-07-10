@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -14,6 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class ServiceAutomotiveOrderRequest {
 
-    public Integer id_service;
+    public UUID id_service;
     public LocalDateTime scheduled_date;
 }
