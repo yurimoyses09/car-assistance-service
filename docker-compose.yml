@@ -1,4 +1,20 @@
 services:
+  service-order-create:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - backend
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   postgres:
     image: postgres:15
     container_name: postgres-db
@@ -31,8 +47,12 @@ services:
       dockerfile: Dockerfile
     container_name: api-system-car
     depends_on:
-      - postgres
-      - automotive-mock-service
+      postgres:
+        condition: service_started
+      automotive-mock-service:
+        condition: service_started
+      service-order-create:
+        condition: service_healthy
     ports:
       - "8080:8080"
     environment:
@@ -40,6 +60,11 @@ services:
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: admin
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_HOST: service-order-create
+      RABBITMQ_PORT: 5672
     networks:
       - backend
 

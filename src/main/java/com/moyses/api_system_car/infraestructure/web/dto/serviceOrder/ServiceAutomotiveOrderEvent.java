@@ -12,8 +12,9 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceAutomotiveOrderRequest {
+public class ServiceAutomotiveOrderEvent {
 
     public UUID id_service;
+    public UUID id_user;
     public LocalDateTime scheduled_date;
 }

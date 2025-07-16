@@ -14,8 +14,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceAutomotiveOrderResponse {
-
+public class ServiceAutomotiveAvailableResponse {
     private UUID id;
     private String name;
     private String description;

@@ -1,10 +1,12 @@
 package com.moyses.api_system_car.infraestructure.persistence.mapper;
 
 import com.moyses.api_system_car.domain.model.Car;
+import com.moyses.api_system_car.domain.model.OrderStatus;
 import com.moyses.api_system_car.domain.model.ServiceAutomotiveOrder;
 import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.infraestructure.persistence.entity.ServiceAutomotiveOrderEntity;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveOrderRequest;
+import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveAvailableResponse;
+import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveCreateOrder;
 import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveOrderResponse;
 import org.springframework.stereotype.Component;
 
@@ -27,18 +29,19 @@ public class ServiceAutomotiveOrderMapper {
         return ServiceAutomotiveOrderResponse.builder()
                 .id(serviceAutomotiveOrder.getId())
                 .name(serviceAutomotiveOrder.getName())
+                .status(serviceAutomotiveOrder.getStatus())
                 .available_data(Collections.singletonList(serviceAutomotiveOrder.getScheduledDate()))
                 .price(serviceAutomotiveOrder.getPrice())
                 .description(serviceAutomotiveOrder.getDescription()).build();
     }
 
-    public ServiceAutomotiveOrder toModel (Car car, User user, ServiceAutomotiveOrderRequest request, ServiceAutomotiveOrderResponse response){
+    public ServiceAutomotiveOrder toModel (Car car, User user, ServiceAutomotiveCreateOrder order, ServiceAutomotiveAvailableResponse service){
         return ServiceAutomotiveOrder.builder()
                 .id(UUID.randomUUID())
-                .name(response.getName())
-                .description(response.getDescription())
-                .price(response.getPrice())
-                .scheduledDate(request.getScheduled_date())
+                .name(service.getName())
+                .description(service.getDescription())
+                .price(service.getPrice())
+                .scheduledDate(order.getScheduled_date())
                 .car(car)
                 .user(user).build();
     }
@@ -51,6 +54,7 @@ public class ServiceAutomotiveOrderMapper {
                 .price(serviceAutomotiveOrder.getPrice())
                 .scheduledDate(serviceAutomotiveOrder.getScheduledDate())
                 .createdAt(LocalDateTime.now())
+                .status(OrderStatus.PENDING)
                 .car(_carMapper.toEntity(serviceAutomotiveOrder.getCar()))
                 .user(_userMapper.toEntity(serviceAutomotiveOrder.getUser())).build();
     }
@@ -63,6 +67,7 @@ public class ServiceAutomotiveOrderMapper {
                 .price(entity.getPrice())
                 .scheduledDate(entity.getScheduledDate())
                 .createAt(entity.getCreatedAt())
+                .status(entity.getStatus())
                 .car(_carMapper.toModel(entity.getCar()))
                 .user(_userMapper.toModel(entity.getUser())).build();
     }
