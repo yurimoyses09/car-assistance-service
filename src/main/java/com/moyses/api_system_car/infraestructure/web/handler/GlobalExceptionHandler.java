@@ -3,7 +3,7 @@ package com.moyses.api_system_car.infraestructure.web.handler;
 import com.moyses.api_system_car.domain.exception.CatalogLoadException;
 import com.moyses.api_system_car.domain.exception.serviceAutomotive.ServiceAutomotiveException;
 import com.moyses.api_system_car.domain.exception.serviceAutomotive.ServiceAutomotiveNotFoundException;
-import com.moyses.api_system_car.infraestructure.web.dto.api.Response;
+import com.moyses.api_system_car.application.dto.api.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

@@ -1,9 +1,9 @@
 package com.moyses.api_system_car.infraestructure.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moyses.api_system_car.application.service.ServiceAutomotiveService;
+import com.moyses.api_system_car.application.usecase.order.OrderAutomotiveCaseUse;
 import com.moyses.api_system_car.infraestructure.web.controller.CarController;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveCreateOrder;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveCreateOrder;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,11 +17,11 @@ public class OrderConsumer {
     private static Logger _logger = Logger.getLogger(CarController.class.getName());
     private final ObjectMapper _mapper;
 
-    private final ServiceAutomotiveService _service;
+    private final OrderAutomotiveCaseUse _service;
 
-    public OrderConsumer(ObjectMapper mapper, ServiceAutomotiveService _service) {
+    public OrderConsumer(ObjectMapper mapper, OrderAutomotiveCaseUse service) {
         this._mapper = mapper;
-        this._service = _service;
+        _service = service;
     }
 
     @RabbitListener(queues = "service.automotive.create")
@@ -31,7 +31,7 @@ public class OrderConsumer {
 
             var mapper = _mapper.readValue(message, ServiceAutomotiveCreateOrder.class);
 
-            _service.createOrder(mapper);
+            _service.executeCreateOrder(mapper);
         } catch (Exception e) {
             _logger.warning("Error processing message: " + e.getMessage());
         }

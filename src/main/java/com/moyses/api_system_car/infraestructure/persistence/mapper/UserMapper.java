@@ -2,8 +2,8 @@ package com.moyses.api_system_car.infraestructure.persistence.mapper;
 
 import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.infraestructure.persistence.entity.UserEntity;
-import com.moyses.api_system_car.infraestructure.web.dto.auth.RegisterRequest;
-import com.moyses.api_system_car.infraestructure.web.dto.user.UserResponse;
+import com.moyses.api_system_car.application.dto.auth.RegisterRequest;
+import com.moyses.api_system_car.application.dto.user.UserResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

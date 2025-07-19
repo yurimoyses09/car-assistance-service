@@ -1,8 +1,8 @@
 package com.moyses.api_system_car.infraestructure.persistence.mapper;
 
 import com.moyses.api_system_car.domain.model.User;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveOrderEvent;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveOrderRequest;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveOrderEvent;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveOrderRequest;
 import org.springframework.stereotype.Component;
 
 @Component

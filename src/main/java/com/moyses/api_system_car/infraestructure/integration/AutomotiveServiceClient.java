@@ -1,6 +1,6 @@
 package com.moyses.api_system_car.infraestructure.integration;
 
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveOrderResponse;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveOrderResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

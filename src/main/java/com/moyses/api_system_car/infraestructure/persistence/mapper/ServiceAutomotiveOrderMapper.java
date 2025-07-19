@@ -5,9 +5,9 @@ import com.moyses.api_system_car.domain.model.OrderStatus;
 import com.moyses.api_system_car.domain.model.ServiceAutomotiveOrder;
 import com.moyses.api_system_car.domain.model.User;
 import com.moyses.api_system_car.infraestructure.persistence.entity.ServiceAutomotiveOrderEntity;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveAvailableResponse;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveCreateOrder;
-import com.moyses.api_system_car.infraestructure.web.dto.serviceOrder.ServiceAutomotiveOrderResponse;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveAvailableResponse;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveCreateOrder;
+import com.moyses.api_system_car.application.dto.serviceOrder.ServiceAutomotiveOrderResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
