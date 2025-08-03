@@ -1,5 +1,6 @@
 package com.moyses.api_system_car.infraestructure.persistence.entity;
 
+import com.moyses.api_system_car.domain.model.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -24,8 +24,9 @@ public class ServiceAutomotiveOrderEntity {
     public String description;
     public Double price;
     public LocalDateTime scheduledDate;
-    public String status;
 
+    @Enumerated(EnumType.STRING)
+    public OrderStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
 

@@ -6,6 +6,7 @@ import com.moyses.api_system_car.infraestructure.persistence.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class UserRepositoryImpl implements IUserRepository {
@@ -22,6 +23,11 @@ public class UserRepositoryImpl implements IUserRepository {
     public Optional<User> findByEmail(String email) {
         return _jpaRepository.findByEmail(email)
                 .map(_mapper::toModel);
+    }
+
+    @Override
+    public Optional<User> findById(UUID id) {
+        return _jpaRepository.findById(id).map(_mapper::toModel);
     }
 
     @Override

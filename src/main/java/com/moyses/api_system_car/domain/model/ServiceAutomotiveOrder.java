@@ -17,6 +17,7 @@ public class ServiceAutomotiveOrder {
     public String name;
     public Double price;
     public String description;
+    public OrderStatus status;
     public LocalDateTime scheduledDate;
     public LocalDateTime createAt;
     public LocalDateTime updateAt;
