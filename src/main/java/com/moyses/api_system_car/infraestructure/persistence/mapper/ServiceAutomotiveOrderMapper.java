@@ -54,7 +54,7 @@ public class ServiceAutomotiveOrderMapper {
                 .price(serviceAutomotiveOrder.getPrice())
                 .scheduledDate(serviceAutomotiveOrder.getScheduledDate())
                 .createdAt(LocalDateTime.now())
-                .status(OrderStatus.PENDING)
+                .status(OrderStatus.COMPLETED)
                 .car(_carMapper.toEntity(serviceAutomotiveOrder.getCar()))
                 .user(_userMapper.toEntity(serviceAutomotiveOrder.getUser())).build();
     }

@@ -15,10 +15,6 @@ public class OrderMessagePublisher {
     }
 
     public void publish(ServiceAutomotiveOrderEvent order) {
-        template.convertAndSend(
-                RabbitMQConfig.EXCHANGE_NAME,
-                RabbitMQConfig.ROUTING_KEY,
-                order
-        );
+        template.convertAndSend(RabbitMQConfig.QUEUE_NAME, order);
     }
 }
